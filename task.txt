@@ -1,0 +1,10 @@
+REST API  - JSON
+task-----------
+GET/ USERS - List all USERS
+GET/ USER /1 - user with id 1
+ye jo 1 hai usko sidhe to de nhi skte iske lia hame chahia
+dyamic path parameter
+post / user - create new user 
+ 
+ patch/user/id - edit the user with id 1
+ delete/user/1/delete the user with id 1
