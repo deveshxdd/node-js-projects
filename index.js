@@ -19,6 +19,6 @@ app.get('/api/user/:id',(req,res)=>{
 app.listen(PORT,()=>{
     console.log(`server started at port ${PORT}`)
 })
-
+// app.route("/api/user").get().put().patch
 // agar tumhare paas same route hai to sbke lia ye use krkste ho
 // app.route(routename).get().put().patch()
