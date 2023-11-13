@@ -39,6 +39,10 @@ app.use((req , res , next)=>{
 
 
 app.get('/api/user',(req,res)=>{
+    res.setHeader("X-name","devesh")
+console.log(req.headers)
+// WE CAN CREATE OUR OWN CUSTOM HEADER and we can get custom header made  at client
+
     // console.log(req.muusrname)
     return res.json(users)
 })
@@ -53,8 +57,12 @@ app.get('/user',(req,res)=>{
      return res.send(html)
 })
 app.get('/api/user/:id',(req,res)=>{
+   
     const id = Number(req.params.id)
     const user = users.find((usr)=>usr.id===id)
+    if(!user){
+        return res.status(404).json("not found")
+    }
     return res.json(user)
 
 })
@@ -64,9 +72,11 @@ app.post('/api/user',(req,res)=>{
     // iske lia hum middleware use krte hai
     // avi ke lia middleware mtlb plugin 
     console.log(body)
+
+    
     users.push({...body,id: users.length+1})
     fs.writeFile('./MOCK_DATA.json',JSON.stringify(users),(err,ress)=>{
-        return res.json({status: "success", id: users.length+1})
+        return res.status(201).json({status: "success", id: users.length+1})
     })
 })  // write file used to overwrite
 //     fs.appendFile('./MOCK_DATA.json',JSON.stringify(body),(err,ress)=>{
@@ -74,3 +84,4 @@ app.post('/api/user',(req,res)=>{
 //          })
 // })
 // how to get property coming from postman post 
+// Agar hum nodemon ko install krle to hame server ko baar baar start mhi krna pdega 
